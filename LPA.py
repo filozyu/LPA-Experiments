@@ -14,7 +14,7 @@ DEFAULT_PARAMS = {
 
 READ_PATH = './sample_graphs/'
 WRITE_PATH = './results/'
-
+# TODO: finish {read,write}_path
 def read_graph(path=None):
     pass
 def write_results(path=None):
