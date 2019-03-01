@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import networkx as nx
 import numpy as np
@@ -15,15 +16,16 @@ DEFAULT_PARAMS = {
 READ_PATH = './sample_graphs/'
 WRITE_PATH = './results/'
 # TODO: finish {read,write}_path
-def read_graph(path=None):
-    pass
-def write_results(path=None):
-    pass
 
 class LPA(object):
     def __init__(self, graph, params):
         self.graph = graph
         self.params = params
+
+    def read_graph(self, path=None):
+        pass
+    def write_results(self, path=None):
+        pass
 
     def set_default_params(self):
 
@@ -193,10 +195,10 @@ class LPA(object):
         return graph, results
 
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     print("Running LPA...")
-    in_graph = read_graph(path=READ_PATH)
+    in_graph = self.read_graph(path=READ_PATH)
     lpa = LPA(in_graph, DEFAULT_PARAMS)
     out_graph, results = lpa.run()
-    write_results(path=WRITE_PATH)
+    self.write_results(path=WRITE_PATH)
     print("Finished!")
