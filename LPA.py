@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import networkx as nx
 import numpy as np
+# import pickle as pk
 from sklearn import metrics
 
 # training params
@@ -13,19 +14,47 @@ DEFAULT_PARAMS = {
 # Currently only support for incremental integer labels (starts from 0),
 # nodes without labels should be left with ''
 
-READ_PATH = './sample_graphs/'
-WRITE_PATH = './results/'
+WRITE_PATH = './results'
+ROOTPATH = './sample_graphs/20newsgroups'
+
+def path_finder(root_path):
+    EDGE_PATH = {}
+    EDGE_PATH['bahoc'] = root_path+'/baseballhockey/baseballhockey_edge_list.csv'
+    EDGE_PATH['pcmac'] = root_path+'/pcmac/pcmac_edge_list.csv'
+    EDGE_PATH['wimac'] = root_path+'/windowsmac/windowsmac_edge_list.csv'
+
+    LABEL_PATH = {}
+    LABEL_PATH['bahoc'] = root_path+'/baseballhockey/baseballhockey_label_list.csv'
+    LABEL_PATH['pcmac'] = root_path+'/pcmac/pcmac_label_list.csv'
+    LABEL_PATH['wimac'] = root_path+'/windowsmac/windowsmac_label_list.csv'
+
+    return EDGE_PATH, LABEL_PATH
+
+
+
 # TODO: finish {read,write}_path
+def read_graph(path):
+    EDGE_PATH, LABEL_PATH = path_finder(path)
+    graphs = {}
+    for key in EDGE_PATH.keys():
+        graphs[key] = nx.read_edgelist(path=EDGE_PATH[key])
+        temp_label = pd.read_csv(LABEL_PATH[key],header=None)
+        labels = dict(zip(temp_label[0].values, temp_label[1].values))
+        nx.set_node_attributes(graphs[key],labels,'label')
+    return graphs
+
+def write_results(graphs,path=None):
+    if not os.path.isdir(path+"/20newsgroups"):
+        os.mkdir(path+"/20newsgroups")
+    for key in graphs.keys():
+        # if not os.path.isdir(path+"/20newsgroups/"+key)
+        #     os.mkdir(path+"/20newsgroups/"+key)
+            nx.write_gpickle(G=graphs[key], path=path+"/20newsgroups/"+key+".gpickle")
 
 class LPA(object):
     def __init__(self, graph, params):
         self.graph = graph
         self.params = params
-
-    def read_graph(self, path=None):
-        pass
-    def write_results(self, path=None):
-        pass
 
     def set_default_params(self):
 
@@ -197,8 +226,12 @@ class LPA(object):
 
 if __name__ == '__main__':
     print("Running LPA...")
-    in_graph = self.read_graph(path=READ_PATH)
-    lpa = LPA(in_graph, DEFAULT_PARAMS)
-    out_graph, results = lpa.run()
-    self.write_results(path=WRITE_PATH)
+    lpas = {}
+    out_graphs = {}
+    in_graphs = read_graph(path=ROOTPATH)
+    for key in in_graphs.keys():
+        lpas[key] = LPA(in_graphs[key], DEFAULT_PARAMS)
+        thres[key],cmn[key] = lpas[key].demo()
+    # write_results(graphs=out_graphs,path=WRITE_PATH)
+
     print("Finished!")
