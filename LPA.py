@@ -227,7 +227,8 @@ class LPA(object):
 if __name__ == '__main__':
     print("Running LPA...")
     lpas = {}
-    out_graphs = {}
+    thres = {}
+    cmn = {}
     in_graphs = read_graph(path=ROOTPATH)
     for key in in_graphs.keys():
         lpas[key] = LPA(in_graphs[key], DEFAULT_PARAMS)
