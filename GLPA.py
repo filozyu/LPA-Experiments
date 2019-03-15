@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import networkx as nx
 import time
-from LPA import *
+from LPA_GHF import *
 from utils import *
 
 def GLPA(in_graphs):
