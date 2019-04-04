@@ -1,9 +1,16 @@
 # LPA-Experiments
 
+TO-DO List 04 Mar 2019
+
+- Experiments:
+	1. Ones vs. Twos in NN graph (1-NN, 3-NN and 10-NN)
+	2. Odd number of classifiers (or spines) (3,5,7,9 etc.)
+	
+
 TO-DO List 01 Mar 2019
 
 - Experiments:
-	1. LPA  on the original graph
+	1. LPA on the original graph
 	2. Random spanning tree then linear embedding (spine) (ensemble: 1,3,5,7,15,31) . One spine per tree, LPA on the spines.
 	3. Minimal spanning tree LPA
 
