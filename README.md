@@ -3,6 +3,7 @@
 Check: (Fast RST):
 1. https://giovannizappella.github.io/papers/jwta.pdf
 2. https://github.com/ermeel86/wilsons_algorithm_in_python
+3. Test on lollipop graphs
 
 
 TO-DO List 04 Mar 2019
