@@ -5,6 +5,7 @@ TO-DO List 04 Mar 2019
 - Experiments:
 	1. Ones vs. Twos in NN graph (1-NN, 3-NN and 10-NN)
 	2. Odd number of classifiers (or spines) (3,5,7,9 etc.)
+	3. For 20newsgroups: remove edges based on the weights
 	
 
 TO-DO List 01 Mar 2019
