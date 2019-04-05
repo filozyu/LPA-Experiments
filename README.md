@@ -1,5 +1,10 @@
 # LPA-Experiments
 
+Check: (Fast RST):
+1. https://giovannizappella.github.io/papers/jwta.pdf
+2. https://github.com/ermeel86/wilsons_algorithm_in_python
+
+
 TO-DO List 04 Mar 2019
 
 - Experiments:
